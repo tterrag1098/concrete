@@ -1,29 +1,18 @@
 package thutconcrete.client.render;
 
-import java.util.Arrays;
-import static org.lwjgl.opengl.GL11.*;
-import org.lwjgl.opengl.GL11;
-
-import thutconcrete.common.blocks.BlockLift;
-import thutconcrete.common.tileentity.TileEntityLiftAccess;
-import thutconcrete.common.tileentity.TileEntitySensors;
-
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.RenderEngine;
-import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeDirection;
+
+import org.lwjgl.opengl.GL11;
+
+import thutconcrete.common.tileentity.TileEntitySensors;
 
 public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements ISimpleBlockRenderingHandler
 {
@@ -69,13 +58,13 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	
 	public void drawScaleExponant(TileEntitySensors monitor)
 	{
-		RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
+		 TextureManager textureManager = Minecraft.getMinecraft().renderEngine;
 		
 		GL11.glPushMatrix();
 		
-		if(renderengine != null)
+		if(textureManager != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/scale.png");
+			textureManager.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/scale.png"));
 		}
 		
 		if(monitor.getFacing() == ForgeDirection.EAST)
@@ -119,9 +108,9 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	    
 		t.draw();
 		
-		if(renderengine != null)
+		if(textureManager != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/font.png");
+			textureManager.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/font.png"));
 		}
 
 		t.startDrawing(GL11.GL_QUADS);
@@ -149,13 +138,13 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	
 	public void drawScaleCoef(TileEntitySensors monitor)
 	{
-		RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
+		TextureManager renderengine = Minecraft.getMinecraft().renderEngine;
 		
 		GL11.glPushMatrix();
 		
 		if(renderengine != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/font.png");
+			renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/font.png"));
 		}
 		if(monitor.getFacing() == ForgeDirection.EAST)
 		{
@@ -227,13 +216,13 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	
 	public void drawRate(TileEntitySensors monitor)
 	{
-		RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
+		TextureManager renderengine = Minecraft.getMinecraft().renderEngine;
 		
 		GL11.glPushMatrix();
 		
 		if(renderengine != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/font.png");
+			renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/font.png"));
 		}
 		
 		if(monitor.getFacing() == ForgeDirection.EAST)
@@ -378,7 +367,7 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	
 	public void drawFrontButtons(TileEntitySensors monitor)
 	{
-		RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
+		TextureManager renderengine = Minecraft.getMinecraft().renderEngine;
 
 		float shade;
       GL11.glPushMatrix();
@@ -401,7 +390,7 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
       
 		if(renderengine != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/arrow.png");
+			renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/arrow.png"));
 		}
 		
 		GL11.glPushAttrib(GL11.GL_BLEND);
@@ -447,7 +436,7 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	      
 		if(renderengine != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/arrow1.png");
+			renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/arrow1.png"));
 		}
 		
 		GL11.glPushAttrib(GL11.GL_BLEND);
@@ -534,7 +523,7 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 	      
 		if(renderengine != null)
 		{
-			renderengine.bindTexture("/mods/thutconcrete/textures/models/font.png");
+			renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/models/font.png"));
 		}
 		
 		GL11.glPushAttrib(GL11.GL_BLEND);
@@ -893,10 +882,10 @@ public class RenderSensorDisplay extends TileEntitySpecialRenderer// implements 
 					GL11.glTranslated(0, 0, 1);
 					GL11.glRotatef(90, 0, 1, 0);
 				}
-				RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
+				TextureManager renderengine = Minecraft.getMinecraft().renderEngine;
 				if(renderengine != null)
 				{
-					renderengine.bindTexture("/mods/thutconcrete/textures/blocks/greenOverlay.png");
+					renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/blocks/greenOverlay.png"));
 				}
 				
 				GL11.glPushAttrib(GL11.GL_BLEND);

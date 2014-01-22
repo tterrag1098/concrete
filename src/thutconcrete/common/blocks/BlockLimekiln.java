@@ -4,7 +4,6 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import thutconcrete.common.ConcreteCore;
 import thutconcrete.common.corehandlers.ConfigHandler;
 import thutconcrete.common.tileentity.TileEntityLimekiln;
@@ -15,6 +14,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -96,14 +96,14 @@ public class BlockLimekiln extends Block implements ITileEntityProvider
     }
 	
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving entity, ItemStack itemStack)
+	public void onBlockPlacedBy(World worldObj, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
 	{
-		TileEntityLimekiln te = (TileEntityLimekiln)world.getBlockTileEntity(x, y, z);
-		ForgeDirection side =  getFacingfromEntity(entity);
+		TileEntityLimekiln te = (TileEntityLimekiln)worldObj.getBlockTileEntity(x, y, z);
+		ForgeDirection side =  getFacingfromEntity((EntityLiving)entity);
 		if(te==null)
 		{
 			te = new TileEntityLimekiln();
-			world.setBlockTileEntity(x, y, z, te);
+			worldObj.setBlockTileEntity(x, y, z, te);
 		}
 		
 		te.facing = side;

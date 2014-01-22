@@ -1,43 +1,31 @@
 package thutconcrete.common.tileentity;
 
-import icbm.api.explosion.ExplosionEvent;
-import icbm.api.explosion.IExplosive;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.google.common.io.ByteArrayDataInput;
-
-import thutconcrete.api.utils.Vector3;
-import thutconcrete.common.ConcreteCore;
-import thutconcrete.common.Volcano;
-import thutconcrete.common.blocks.Block16Fluid;
-import thutconcrete.common.blocks.BlockMisc;
-import thutconcrete.common.blocks.BlockDust;
-import thutconcrete.common.blocks.BlockLava;
-import thutconcrete.common.blocks.BlockSolidLava;
-import thutconcrete.common.blocks.BlockVolcano;
-import thutconcrete.common.corehandlers.ConfigHandler;
-import thutconcrete.common.network.PacketInt;
-import thutconcrete.common.network.PacketVolcano;
-import thutconcrete.common.utils.ExplosionCustom;
-import thutconcrete.common.utils.ExplosionCustom.Cruncher;
-import thutconcrete.common.utils.LinearAlgebra;
-import thutconcrete.common.utils.ThreadSafeWorldOperations;
-
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.Explosion;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
+import thutconcrete.api.utils.Vector3;
+import thutconcrete.common.Volcano;
+import thutconcrete.common.blocks.Block16Fluid;
+import thutconcrete.common.blocks.BlockDust;
+import thutconcrete.common.blocks.BlockLava;
+import thutconcrete.common.blocks.BlockSolidLava;
+import thutconcrete.common.corehandlers.ConfigHandler;
+import thutconcrete.common.network.PacketVolcano;
+import thutconcrete.common.utils.ExplosionCustom;
+import thutconcrete.common.utils.LinearAlgebra;
+import thutconcrete.common.utils.ThreadSafeWorldOperations;
+
+import com.google.common.io.ByteArrayDataInput;
 
 public class TileEntityVolcano extends TileEntity
 {
@@ -109,6 +97,7 @@ public class TileEntityVolcano extends TileEntity
 	public static int tickRate;
 	public int activeCount = 0;
 	
+	/*
 	@ForgeSubscribe
 	public void explosionEvent(ExplosionEvent evt)
 	{
@@ -120,6 +109,7 @@ public class TileEntityVolcano extends TileEntity
 			}
 		}
 	}
+	*/
 	
 	@Override
 	public void updateEntity()
@@ -226,9 +216,10 @@ public class TileEntityVolcano extends TileEntity
 		v.minorFactor = 1;
 	}
 	
-	public static IExplosive getExplosive(final int type, final int type1, final String source)
+	public static Explosion getExplosive(final int type, final int type1, final String source)
 	{
-		return new IExplosive() {
+		//FIXME something is missing here
+		return new Explosion(Minecraft.getMinecraft().theWorld, null, 0, 0, 0, /*power*/0) {
 			
 			int factor = type+type1;
 			

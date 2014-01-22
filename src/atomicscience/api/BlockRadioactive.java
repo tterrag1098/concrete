@@ -55,8 +55,8 @@ public class BlockRadioactive extends Block
 	public void registerIcons(IconRegister iconRegister)
 	{
 		super.registerIcons(iconRegister);
-		this.iconTop = iconRegister.registerIcon(this.getUnlocalizedName2() + "_top");
-		this.iconBottom = iconRegister.registerIcon(this.getUnlocalizedName2() + "_bottom");
+		this.iconTop = iconRegister.registerIcon(this.getUnlocalizedName() + "_top");
+		this.iconBottom = iconRegister.registerIcon(this.getUnlocalizedName() + "_bottom");
 	}
 
 	@Override

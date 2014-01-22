@@ -2,6 +2,7 @@ package thutconcrete.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
@@ -33,7 +34,7 @@ public class GuiLimekiln extends GuiContainer
 	{
 		GL11.glColor4f(1f, 1f, 1f, 1f);
 		
-		mc.renderEngine.bindTexture("/gui/furnace.png");
+		mc.renderEngine.bindTexture(new ResourceLocation("ThutConcrete", "/gui/furnace.png"));
 		
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;

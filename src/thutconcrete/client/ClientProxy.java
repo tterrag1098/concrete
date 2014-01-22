@@ -80,7 +80,7 @@ public class ClientProxy extends CommonProxy{
 	public static class sounds{
 		@ForgeSubscribe
 		public void onSound(SoundLoadEvent event){
-			event.manager.soundPoolSounds.addSound("railgun.ogg", ConcreteCore.class.getResource("/mods/thutconcrete/sounds/railgun.ogg"));
+			event.manager.soundPoolSounds.addSound("railgun.ogg");
 		}
 	}
 	

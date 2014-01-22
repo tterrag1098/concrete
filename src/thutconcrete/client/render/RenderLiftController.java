@@ -1,28 +1,23 @@
 package thutconcrete.client.render;
 
-import org.lwjgl.opengl.GL11;
-
-import thutconcrete.common.blocks.BlockLift;
-import thutconcrete.common.tileentity.TileEntityLiftAccess;
-import thutconcrete.common.tileentity.TileEntitySensors;
-
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.RenderEngine;
-import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeDirection;
+
+import org.lwjgl.opengl.GL11;
+
+import thutconcrete.common.blocks.BlockLift;
+import thutconcrete.common.tileentity.TileEntityLiftAccess;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class RenderLiftController extends TileEntitySpecialRenderer
 {
@@ -109,14 +104,14 @@ public class RenderLiftController extends TileEntitySpecialRenderer
 		if(monitor.getBlockMetadata()==1&&monitor.getBlockId()==BlockLift.instance.blockID&&floor>0&&floor<17)
 		{
 			
-			RenderEngine renderengine = Minecraft.getMinecraft().renderEngine;
+			TextureManager renderengine = Minecraft.getMinecraft().renderEngine;
 			String col = colour==0?"green":"orange";
 			
 
 			GL11.glPushMatrix();
 			if(renderengine != null)
 			{
-				renderengine.bindTexture("/mods/thutconcrete/textures/blocks/"+col+"Overlay.png");
+				renderengine.bindTexture(new ResourceLocation("/mods/thutconcrete/textures/blocks/"+col+"Overlay.png"));
 			}
 			
 			GL11.glPushAttrib(GL11.GL_BLEND);

@@ -1,6 +1,7 @@
 package atomicscience.api.poison;
 
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import universalelectricity.prefab.potion.CustomPotion;
 import atomicscience.api.AtomicScience;
@@ -23,15 +24,15 @@ public class PotionRadiation extends CustomPotion
 	}
 
 	@Override
-	public void performEffect(EntityLiving par1EntityLiving, int amplifier)
+	public void performEffect(EntityLivingBase par1EntityLivingBase, int amplifier)
 	{
-		if (par1EntityLiving.worldObj.rand.nextFloat() > 0.9 - (amplifier * 0.08))
+		if (par1EntityLivingBase.worldObj.rand.nextFloat() > 0.9 - (amplifier * 0.08))
 		{
-			par1EntityLiving.attackEntityFrom(PoisonRadiation.damageSource, 1);
+			par1EntityLivingBase.attackEntityFrom(PoisonRadiation.damageSource, 1);
 
-			if (par1EntityLiving instanceof EntityPlayer)
+			if (par1EntityLivingBase instanceof EntityPlayer)
 			{
-				((EntityPlayer) par1EntityLiving).addExhaustion(0.010F * (amplifier + 1));
+				((EntityPlayer) par1EntityLivingBase).addExhaustion(0.010F * (amplifier + 1));
 			}
 		}
 

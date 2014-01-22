@@ -125,7 +125,7 @@ public class BlockDust extends Block16Fluid
      */
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("thutconcrete:" + this.getUnlocalizedName2());
+        this.blockIcon = par1IconRegister.registerIcon("thutconcrete:" + this.getUnlocalizedName());
         this.iconFloatingDust = par1IconRegister.registerIcon("thutconcrete:" + "dustCloud");
     }
     

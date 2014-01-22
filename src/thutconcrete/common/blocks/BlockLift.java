@@ -4,7 +4,6 @@ import java.util.List;
 
 import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
 import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import thutconcrete.api.utils.Vector3;
@@ -19,6 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -46,7 +46,7 @@ public class BlockLift extends Block implements ITileEntityProvider, IConnectabl
 	}
 	
 	@Override
-	public void onBlockPlacedBy(World worldObj, int x, int y, int z, EntityLiving entity, ItemStack itemStack)
+	public void onBlockPlacedBy(World worldObj, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
 	{
 		int meta = worldObj.getBlockMetadata(x, y, z);
 		 if(meta==1)
@@ -54,7 +54,7 @@ public class BlockLift extends Block implements ITileEntityProvider, IConnectabl
 			 TileEntityLiftAccess te = (TileEntityLiftAccess)worldObj.getBlockTileEntity(x, y, z);
 			 if(te!=null)
 			 {
-				ForgeDirection side =  getFacingfromEntity(entity);
+				ForgeDirection side =  getFacingfromEntity((EntityLiving) entity);
 				System.out.println("set: "+side+" "+entity.rotationYaw);
 				te.setSide(side.getOpposite().ordinal());
 			 }
